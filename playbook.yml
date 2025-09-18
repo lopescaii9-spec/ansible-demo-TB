@@ -1,0 +1,13 @@
+- name: Configurção inicial 
+  hosts: all #todas as VMs do inventario
+  become: true #responsavel pela elevação do usuario (sudo)
+  tasks: 
+    - name: Atualizar pacotes
+      apt: #modulo responsavel pelo gerenciador de pacotes
+        update_cache: yes #Sudo apt update
+        upgrade: dist #sudo apt upgrade
+
+    - name: Instalar pacotes básicos
+      apt:
+        name: tree
+        state: present
